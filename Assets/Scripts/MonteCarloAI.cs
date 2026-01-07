@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,9 +41,7 @@ public class MonteCarloAI : MonoBehaviour {
 
         public Board(int[] origBoard, bool isWhiteTurn) {
             board = new int[MAXPOINTES + 4];
-            for (int i = 0; i < origBoard.Length; i++) {
-                board[i] = origBoard[i];
-            }
+            System.Array.Copy(origBoard, board, origBoard.Length);
 
             whiteTurn = isWhiteTurn;
         }
@@ -53,9 +51,7 @@ public class MonteCarloAI : MonoBehaviour {
         }
 
         public void setBoard(int[] origBoard) {
-            for (int i = 0; i < origBoard.Length; i++) {
-                board[i] = origBoard[i];
-            }
+            System.Array.Copy(origBoard, board, origBoard.Length);
         }
 
         public bool isWhiteTurn() {
@@ -80,7 +76,7 @@ public class MonteCarloAI : MonoBehaviour {
     private Dictionary<int[], int> wins = new Dictionary<int[], int>(new CustomEqualityComparer()); //Wins is a dictionary mapping board states to number of wins from that board state
     private Dictionary<int[], int> plays = new Dictionary<int[], int>(new CustomEqualityComparer()); //Plays is dictionary mapping board states to number of plays from that board state
 
-    public static float allocatedTime = 30f; //How much time a move is allowed to take up
+    public static float allocatedTime = 0.25f; //How much time a move is allowed to take up
     [SerializeField] int maxMoves = 100; //Max moves allowed in one turn
     [SerializeField] float explorationParam = 1.4f; //Used in equation to determine which child to visit
     
@@ -90,11 +86,10 @@ public class MonteCarloAI : MonoBehaviour {
         int[] b = new int[origBoard.Length];
         
         //Want deep copy of the board, do not want to overwrite board or will mess up main game. It is passed by reference
-        for(int i = 0; i < origBoard.Length; i++) {
-            b[i] = origBoard[i];
-        }
+        System.Array.Copy(origBoard, b, origBoard.Length);
 
         Board currState = new Board(b, true);
+        states.Clear();
         states.Add(currState);
 
         List<KeyValuePair<int, int>> legalMoves = getLegalMoves(b, roll1, roll2, false);
@@ -109,13 +104,12 @@ public class MonteCarloAI : MonoBehaviour {
 
         int numGames = 0;
 
-        float currTimeRunning = 0f;
+        System.Diagnostics.Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
 
         //Keep running simulations for the amount of time allowed
-        while (currTimeRunning < allocatedTime) {
+        while (sw.Elapsed.TotalSeconds < allocatedTime) {
             //Run simmulation
             runSimulation(roll1, roll2);
-            currTimeRunning += Time.deltaTime;
             numGames += 1;
         }
 
@@ -551,9 +545,7 @@ public class MonteCarloAI : MonoBehaviour {
     private int[] updateBoard(int[] origBoard, KeyValuePair<int, int> movePair, bool whiteTurn) {
         int[] b = new int[origBoard.Length];
 
-        for (int i = 0; i < origBoard.Length; i++) {
-            b[i] = origBoard[i];
-        }
+        System.Array.Copy(origBoard, b, origBoard.Length);
 
         if (whiteTurn) {
             b[movePair.Key]--;

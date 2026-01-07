@@ -7,7 +7,7 @@ public class BaringOffManager : MonoBehaviour
 {
     //These constants refer to the shader to apply when indicating a checker can be moved here or not
     private const string HIGHLIGHTSHADERNAME = "Shader Graphs/PointeHighlight";
-    private const string DEFAULTSHADERNAME = "Lightweight Render Pipeline/Lit";
+    private const string DEFAULTSHADERNAME = "Universal Render Pipeline/Lit";
 
     //The in game positions where the checkers will stack when barred off
     [SerializeField] Vector3 whiteCheckerPos = Vector3.zero;

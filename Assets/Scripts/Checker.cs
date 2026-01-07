@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class Checker : MonoBehaviour
     //Deals with setting shader, to indicate when the checker is clickable to move
     private const string WHITEHIGHLIGHTSHADERNAME = "Shader Graphs/WhiteCheckerHighlight";
     private const string BLACKHIGHLIGHTSHADERNAME = "Shader Graphs/BlackCheckerHighlight";
-    private const string DEFAULTSHADERNAME = "Lightweight Render Pipeline/Lit";
+    private const string DEFAULTSHADERNAME = "Universal Render Pipeline/Lit";
     private Renderer renderer = null;
     private bool clickable = false;
 

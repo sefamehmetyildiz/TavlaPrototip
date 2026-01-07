@@ -9,7 +9,7 @@ public class PointeManager : MonoBehaviour {
 
     //Deals with applying a shader to indicate the pointe is clickable/not clickable
     private const string HIGHLIGHTSHADERNAME = "Shader Graphs/PointeHighlight";
-    private const string DEFAULTSHADERNAME = "Lightweight Render Pipeline/Lit";
+    private const string DEFAULTSHADERNAME = "Universal Render Pipeline/Lit";
     private Renderer renderer = null;
     private bool clickable = false;
 

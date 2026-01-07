@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class Dice : MonoBehaviour
 {
     //Used to indicate a die is clickable by applying a highlight shader effect
     private const string HIGHLIGHTSHADERNAME = "Shader Graphs/DiceHighlight";
-    private const string DEFAULTSHADERNAME = "Lightweight Render Pipeline/Lit";
+    private const string DEFAULTSHADERNAME = "Universal Render Pipeline/Lit";
     private bool clickable = false;
 
     //The game only supports rolls 1-6
