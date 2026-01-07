@@ -7,9 +7,9 @@ using UnityEngine.UI;
 //The slower the AI, the more time it has to run, therefore the better the moves
 public class AISettingsController : MonoBehaviour
 {
-    private const float slowAISpeed = 30f;
-    private const float mediumAISpeed = 20f;
-    private const float fastAISpeed = 10f;
+    private const float slowAISpeed = 0.5f;
+    private const float mediumAISpeed = 0.25f;
+    private const float fastAISpeed = 0.1f;
 
     private const string slowAISpeedText = "SLOW";
     private const string mediumAISpeedText = "MEDIUM";
